@@ -47,4 +47,4 @@ alias \
 	fsremote="sshfs jah@192.168.178.201:/home/jah /mnt/razer" \
 	doom="~/.config/emacs/bin/doom" \
 	gua="git remote | xargs -L1 git push --all" \
-	cua="config remote | xargs -L1 config push --all" \
+	cua='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME remote | xargs -L1 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push --all' \
