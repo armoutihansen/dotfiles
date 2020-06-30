@@ -1,0 +1,6 @@
+#!/bin/sh
+
+chosen=$(cat ~/.config/qutebrowser/quickmarks | awk '{print $2}' | dmenu -i -l 5 -p "Open quickmark:")
+[ -z "$chosen" ] && exit
+
+qutebrowser --target window "$chosen"

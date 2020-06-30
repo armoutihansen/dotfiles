@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Script that toggles VPN connection to the University of Cologne
+
+# systemctl is-active --quiet vpnc@uni && notify-send "VPN is already running... Closing connection" && sudo -A systemctl stop vpnc@uni && notify-send "VPN connection closed" && kill -45 $(pidof dwmblocks) && exit
+
+# notify-send "VPN not running... Starting connection" && sudo -A systemctl start vpnc@uni && notify-send "VPN connection started" && kill
+vpns="home
+uni"
+choice=$(echo "$vpns" | dmenu -i -p "Which vpn?")
+if [ "${choice}" = "uni" ];then
+	STATUS="$(systemctl is-active vpnc@uni)"
+	if [ "${STATUS}" = "active" ];then
+		notify-send "VPN is already running... Closing connection" &
+		sudo -A systemctl stop vpnc@uni &&
+		notify-send "VPN connection closed"; kill -45 $(pidof dwmblocks)
+	else
+		notify-send "Starting VPN connection" &
+		sudo -A systemctl start vpnc@uni &&
+		notfiy-send "VPN connection started"; kill -45 $(pidof dwmblocks)
+	fi
+else
+	STATUS="$(systemctl is-active vpnc@home)"
+	if [ "${STATUS}" = "active" ];then
+		notify-send "VPN is already running... Closing connection" &
+		sudo -A systemctl stop vpnc@home &&
+		notify-send "VPN connection closed"; kill -45 $(pidof dwmblocks)
+	else
+		notify-send "Starting VPN connection" &
+		sudo -A systemctl start vpnc@home &&
+		notfiy-send "VPN connection started"; kill -45 $(pidof dwmblocks)
+	fi
+fi

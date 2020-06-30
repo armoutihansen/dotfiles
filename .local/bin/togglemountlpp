@@ -1,0 +1,15 @@
+#!/bin/sh
+
+STATUS="$(systemctl is-active vpnc@uni)"
+if [ "${STATUS}" = "inactive" ];then
+	notify-send "VPN not connected... Aborting" & exit
+fi
+if [ "$(ls -A /home/jah/Work/LPP/data)" ]; then
+	notify-send "Data already mounted... Unmounting" && sudo -A umount /home/jah/Work/LPP/data && notify-send "Data unmounted"
+else
+	notify-send "Data not mounted... Mounting" &
+	username=$(dmenu -P -p "Username") &&
+	password=$(dmenu -P -p "Password") &&
+	sudo -A mount -t cifs -o "domain=AD,username=$username,password=$password,sec=ntlm,vers=1.0" //sofs2.uni-koeln.de/projects/Arbeitsqualitaet/Projektteam/Data/Data_LPP_2/data /home/jah/Work/LPP/data &&
+	notify-send "Data mounted"
+fi

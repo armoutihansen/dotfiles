@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Script that toggles VPN connection to the University of Cologne
+
+systemctl is-active --quiet vpnc@uni && printf "%s%s" "🌍 " "uni" && exit
+systemctl is-active --quiet vpnc@home && printf "%s%s" "🌍 " "home" && exit

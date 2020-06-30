@@ -1,0 +1,34 @@
+#!/bin/sh
+
+create_menu() {
+    # Check quickmarks
+    while read -r url; do
+	    echo $url | awk '{print $2}'
+    done < "$XDG_CONFIG_HOME"/qutebrowser/quickmarks
+
+    printf "%0$(tput cols)d" 0|tr '0' '='
+    printf "BOOKMARKS"
+    printf "%0$(tput cols)d\n" 0|tr '0' '='
+    # Next bookmarks
+    while read -r url _; do
+        printf -- '%s\n' "$url"
+    done < "$XDG_CONFIG_HOME"/qutebrowser/bookmarks/urls
+
+    printf "%0$(tput cols)d" 0|tr '0' '='
+    printf "HISTORY"
+    printf "%0$(tput cols)d\n" 0|tr '0' '='
+    # Finally history
+    sqlite3 $XDG_DATA_HOME/qutebrowser/history.sqlite -cmd "select distinct title || ' ' || url from History where title <> 'about:blank' order by atime desc limit 70" ".exit"
+    }
+
+declare -A array1=$(create_menu)
+
+chosen=$(create_menu | dmenu -i -l 30)
+
+[ -z "$chosen" ] && exit
+
+if (printf '%s\n' "${array1[@]}" | grep -xq "$chosen"); then
+	 qutebrowser --target window ${chosen/*http/http}
+else
+	 qutebrowser --target window "$chosen"
+fi

@@ -1,0 +1,34 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) notify-send "💾 Memory hogs" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)" ;;
+	2) setsid "$TERMINAL" -e htop & ;;
+	3) notify-send "💾 Memory module" "\- Shows Memory Used/Total.
+- Click to show memory hogs.
+- Middle click to open htop." ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+## DISK
+hdd() {
+  hdd="$(df -h | awk 'NR==4{print $3, $5}')"
+  echo -e " $hdd"
+}
+
+## RAM
+mem() {
+  mem=`free --mebi | sed -n '2{p;q}' | awk '{printf ("%2.2fGiB/%2.2fGiB\n", ( $3 / 1024), ($2 / 1024))}'`
+  echo -e "$mem"
+}
+
+## CPU
+cpu() {
+  read -r cpu a b c previdle rest < /proc/stat
+  prevtotal=$((a+b+c+previdle))
+  sleep 0.5
+  read -r cpu a b c idle rest < /proc/stat
+  total=$((a+b+c+idle))
+  cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+  echo -e "$cpu%"
+}
+
+echo "💻 $(cpu) 💾 $(mem) 💿$(hdd)"

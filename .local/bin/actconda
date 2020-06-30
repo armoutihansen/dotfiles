@@ -1,0 +1,8 @@
+#!/bin/sh
+source ~/.miniconda/etc/profile.d/conda.sh
+
+chosen=$(ls ~/.miniconda/envs | dmenu -i -p "Conda environment:")
+[ -z "$chosen" ] && exit
+
+conda activate $chosen && st -e nvim
+# echo $chosen
