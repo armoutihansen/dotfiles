@@ -17,7 +17,7 @@ Plug 'PotatoesMaster/i3-vim-syntax' 		" Syntax support for i3 config
 Plug 'jreybert/vimagit'  			" Git workflow
 Plug 'lukesmithxyz/vimling' 			" Prose
 Plug 'vimwiki/vimwiki' 				" Personal wiki
-Plug 'bling/vim-airline' 			" Airline and tabline
+" Plug 'bling/vim-airline' 			" Airline and tabline
 Plug 'tpope/vim-commentary' 			" Easy code commenting
 Plug 'kovetskiy/sxhkd-vim' 			" Syntax support for sxhkd
 Plug 'ap/vim-css-color' 			" Color support
@@ -43,12 +43,16 @@ Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " some basics
-	colorscheme dracula
+	" colorscheme dracula
+	" colorscheme palenight
+	" set background=dark
 	au ColorScheme * hi Normal ctermbg=None
-	set cursorline
+	" set cursorline
 	set go=a
 	set mouse=a
 	set nohlsearch
@@ -89,7 +93,10 @@ call plug#end()
 " AirLine settings
 	" let g:airline#extensions#tabline#enabled=1
 	" let g:airline#extensions#tabline#formatter='unique_tail'
-	let g:airline_powerline_fonts=1
+	" let g:airline_powerline_fonts=1
+	let g:lightline = {
+				\ 'colorscheme': 'wombat',
+				\	}
 
 " Colors and Theming
 	" highlight Comment 	cterm=italic
