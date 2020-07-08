@@ -27,13 +27,6 @@ Plug 'ryanoasis/vim-devicons' 			" Icon support
 Plug 'mhinz/vim-startify'                 	" Vim Start Page
 Plug 'qpkorr/vim-bufkill' 			" Kill buffer while preserving splits
 Plug 'urbainvaes/vim-ripple' 			" REPLs
-" Plug 'davidhalter/jedi-vim' 			" Goto (e.g ., assignments, definitions...)
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "Autocompletion
-" Plug 'deoplete-plugins/deoplete-jedi' 		" Deoplete soouce for jedi
-" Plug 'vim-python/python-syntax' 		" Python syntax support
-" Plug 'vim-scripts/indentpython.vim' 		" Proper python indention
-" Plug 'neomake/neomake' 				" Linting
-" Plug 'sbdchd/neoformat' 			" Auto formating off code
 Plug 'cjrh/vim-conda'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -44,21 +37,22 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " some basics
 	" colorscheme dracula
-	" colorscheme palenight
-	" set background=dark
+	colorscheme palenight
+	set background=dark
 	au ColorScheme * hi Normal ctermbg=None
-	" set cursorline
+	set cursorline
 	set go=a
 	set mouse=a
 	set nohlsearch
 	set clipboard+=unnamedplus
-	set laststatus=2
-	set noshowmode
+	set laststatus=0
+	set t_Co=256
+	" set noshowmode
 	set noshowcmd
 	set nobackup                    	" No auto backups
 	set noswapfile                  	" No swap
@@ -90,16 +84,12 @@ call plug#end()
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
 
-" AirLine settings
-	" let g:airline#extensions#tabline#enabled=1
-	" let g:airline#extensions#tabline#formatter='unique_tail'
-	" let g:airline_powerline_fonts=1
-	let g:lightline = {
-				\ 'colorscheme': 'wombat',
-				\	}
+" 	let g:lightline = {
+" 				\ 'colorscheme': 'wombat',
+" 				\	}
 
 " Colors and Theming
-	" highlight Comment 	cterm=italic
+	" highlight Comment 	cterm=italic ctermfg=7
 	" highlight Pmenu 	ctermbg=8
 	" highlight PmenuSel 	ctermbg=6
 	" highlight PmenuSbar 	ctermbg=0
@@ -107,26 +97,12 @@ call plug#end()
 	" highlight VertSplit        ctermfg=0    ctermbg=8       cterm=none
 	" highlight LineNr           ctermfg=8    ctermbg=none    cterm=none
 	" highlight CursorLineNr     ctermfg=7    ctermbg=8       cterm=none
-
+	highlight EndOfBuffer ctermfg=none ctermbg=none
 	highlight SignColumn 	ctermbg=none
 	highlight LineNr           ctermfg=8    ctermbg=none    cterm=none
-	highlight CursorLine 	ctermbg=8
-	highlight CursorLineNr     ctermfg=7    ctermbg=8       cterm=none
+	highlight CursorLine 	ctermbg=8   cterm=none
+	highlight CursorLineNr     ctermfg=15    ctermbg=8       cterm=none
 	highlight VertSplit        ctermfg=0    ctermbg=8       cterm=none
-	" highlight Statement        ctermfg=2    ctermbg=none    cterm=none
-	" highlight Directory        ctermfg=4    ctermbg=none    cterm=none
-	" highlight StatusLine       ctermfg=7    ctermbg=8       cterm=none
-	" highlight StatusLineNC     ctermfg=7    ctermbg=8       cterm=none
-	" highlight NERDTreeClosable ctermfg=2
-	" highlight NERDTreeOpenable ctermfg=8
-	" highlight Comment          ctermfg=4    ctermbg=none    cterm=italic
-	" highlight Constant         ctermfg=12   ctermbg=none    cterm=none
-	" highlight Special          ctermfg=4    ctermbg=none    cterm=none
-	" highlight Identifier       ctermfg=6    ctermbg=none    cterm=none
-	" highlight PreProc          ctermfg=5    ctermbg=none    cterm=none
-	" highlight String           ctermfg=12   ctermbg=none    cterm=none
-	" highlight Number           ctermfg=1    ctermbg=none    cterm=none
-	" highlight Function         ctermfg=1    ctermbg=none    cterm=none
 
 
 
@@ -199,8 +175,9 @@ nnoremap <silent> <C-p> :FZF<CR>
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Enable Goyo by default for mutt writting
-	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=100
+	" autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=100
 	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
+	" autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
 	autocmd BufRead,BufNewFile /tmp/neomutt* :set cursorline!
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>

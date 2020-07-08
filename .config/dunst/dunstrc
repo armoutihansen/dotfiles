@@ -8,7 +8,7 @@
     notification_height = 0
     separator_height = 2
     padding = 0
-    horizontal_padding = 8
+    horizontal_padding = 15
     frame_width = 3
     frame_color = "#282828"
 
@@ -83,8 +83,8 @@
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#caa9fa"
-    foreground = "#282a36"
+    background = "#292d3e"
+    foreground = "#d0d0d0"
     timeout = 5
 
 [urgency_critical]

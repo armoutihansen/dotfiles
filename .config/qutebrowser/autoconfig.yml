@@ -45,10 +45,17 @@ settings:
     global: true
   content.notifications:
     https://www.reddit.com: false
+  editor.command:
+    global:
+    - nvim
+    - -f
+    - '{file}'
+    - -c
+    - normal {line}G{column0}l
   qt.highdpi:
     global: true
-  statusbar.hide:
-    global: false
+  statusbar.show:
+    global: always
   tabs.show:
     global: always
   url.searchengines:

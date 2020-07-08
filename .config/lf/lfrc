@@ -18,7 +18,8 @@ cmd open ${{
 	image/vnd.djvu|application/pdf|application/octet-stream) zathura $fx ;;
 	# image/vnd.djvu|application/pdf|application/octet-stream) setsid zathura $fx >/dev/null 2>&1 & ;;
     	text/troff) man ./ $f;;
-        text/*) $EDITOR $fx;;
+        text/x-org) emacs $f;;
+        text/*) $EDITOR $f;;
 	application/json) $EDITOR $fx;;
 	image/x-xcf|image/svg+xml) setsid gimp $f >/dev/null 2>&1 & ;;
 	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\)\(_large\)*$" | sxiv -aio ;;
