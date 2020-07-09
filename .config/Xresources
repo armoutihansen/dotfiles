@@ -7,8 +7,8 @@ Xft.dpi: 192
 *.font: monospace:size=10
 
 
-Sxiv.background: #1d2021
-Sxiv.foreground: #bbbbbb
+Sxiv.background: #292d3e
+Sxiv.foreground: #82aaff
 /* name		dark	light */
 /* black	0	8 */
 /* red		1	9 */

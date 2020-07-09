@@ -31,4 +31,4 @@ cpu() {
   echo -e "$cpu%"
 }
 
-echo "💻 $(cpu) 💾 $(mem) 💿$(hdd)"
+echo "💾 $(mem) 💿$(hdd) 💻 $(cpu)"
