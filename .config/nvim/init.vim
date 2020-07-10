@@ -10,8 +10,9 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'  			" Modify inside brackets
 Plug 'jiangmiao/auto-pairs' 			" Autopair brackets, quotations...
-Plug 'scrooloose/nerdtree'                         " Nerdtree
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
+" Plug 'scrooloose/nerdtree'                         " Nerdtree
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/goyo.vim'  			" Environment for writing
 Plug 'PotatoesMaster/i3-vim-syntax' 		" Syntax support for i3 config
 Plug 'jreybert/vimagit'  			" Git workflow
@@ -214,24 +215,24 @@ endif
 " Toggle relative numbering off/on
 	nnoremap <F4> :set relativenumber!<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERDTree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Uncomment to autostart the NERDTree
-" autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '►'
-let g:NERDTreeDirArrowCollapsible = '▼'
-let NERDTreeShowLineNumbers=1
-let NERDTreeShowHidden=1
-let NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize=38
-" " NeoMake settings
-" 	let g:neomake_python_enabled_makers = ['pylint']
-" 	map <leader>lo :lopen<CR>
-" 	map <leader>lc :lclose<CR>
-" 	map <leader>lp :lprev<CR>
-" 	map <leader>ln :lnext<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" => NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Uncomment to autostart the NERDTree
+"" autocmd vimenter * NERDTree
+"map <C-n> :NERDTreeToggle<CR>
+"let g:NERDTreeDirArrowExpandable = '►'
+"let g:NERDTreeDirArrowCollapsible = '▼'
+"let NERDTreeShowLineNumbers=1
+"let NERDTreeShowHidden=1
+"let NERDTreeMinimalUI = 1
+"let g:NERDTreeWinSize=38
+"" " NeoMake settings
+"" 	let g:neomake_python_enabled_makers = ['pylint']
+"" 	map <leader>lo :lopen<CR>
+"" 	map <leader>lc :lclose<CR>
+"" 	map <leader>lp :lprev<CR>
+"" 	map <leader>ln :lnext<CR>
 
 " 	function! MyOnBattery()
 " 	  return readfile('/sys/class/power_supply/AC0/online') == ['0']
