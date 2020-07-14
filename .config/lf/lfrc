@@ -8,9 +8,11 @@ set scrolloff 10
 set color256
 set icons
 set period 1
+set drawbox true
+set previewer /home/jah/.local/bin/preview
 
 # Vars that depend on environmental variables
-$lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
+# $lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
 
 # cmds/functions
 cmd open ${{
@@ -29,6 +31,12 @@ cmd open ${{
 	application/pdf) setsid zathura $fx >/dev/null 2>&1 & ;;
         *) for f in $fx; do setsid $OPENER $f >/dev/null 2>&1 & done;;
     esac
+}}
+
+cmd open_emacs ${{
+	# setsid emacsclient -c -a emacs $fx >/dev/null 2>&1 &
+	devour emacsclient -c -a emacs $fx
+	# emacsclient $f
 }}
 
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
@@ -64,6 +72,17 @@ cmd bulkrename ${{
     vidir
 }}
 
+cmd fzf_jump ${{
+	res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
+	if [ -f "$res" ]; then
+		cmd="select"
+	elif [ -d "$res" ]; then
+		cmd="cd"
+	fi
+	lf -remote "send $id $cmd \"$res\""
+}}
+
+
 # Bindings
 map <c-f> $lf -remote "send $id select '$(fzf)'"
 map J $lf -remote "send $id cd $(cut -d'	' -f2 ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)"
@@ -79,6 +98,9 @@ map x $$f
 map X !$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
+map f fzf_jump
+map E open_emacs
+map v /usr/bin/emacsclient -c -a emacs "$f"
 
 map A rename # at the very end
 map c push A<c-u> # new rename
