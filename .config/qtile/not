@@ -1,0 +1,45 @@
+#!/usr/bin/python
+
+import sys
+import gi
+gi.require_version('Notify', '0.7')
+from gi.repository import Notify
+import subprocess
+import ast
+
+print(sys.argv)
+
+if '-t' in sys.argv:
+    title = sys.argv[sys.argv.index('-t')+1]
+else:
+    title = ""
+if '-m' in sys.argv:
+    message = sys.argv[sys.argv.index('-m')+1]
+else:
+    message = ""
+if '-c' in sys.argv:
+    command = sys.argv[sys.argv.index('-c')+1]
+else:
+    command = ""
+
+print('title:', title)
+print('message:', message)
+print('command:', command)
+# text = sys.argv[1].split('\n')
+# commands = ""
+# for i in sys.argv[2:]:
+#     commands += i + " "
+# # print(title)
+# print(commands)
+def notification(title, command, message):
+    Notify.init('Test')
+    return Notify.Notification.new(title, message, subprocess.check_output(
+        command, shell=True).decode("utf-8")).show()
+#     else:
+#         return Notify.Notification.new(title, subprocess.check_output(command, shell=True).decode("utf-8")).show()
+
+# notification("sdfs \n asdas", "ls")
+notification(title="hh", message="jj", command=ls)
+
+
+notification(title=title, message=message, command=command)

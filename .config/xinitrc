@@ -22,4 +22,4 @@ export SSH_AUTH_SOCK
 
 xrdb -merge ~/.config/Xresources
 ssh-agent dwm
-# ssh-agent i3
+# qtile

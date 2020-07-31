@@ -3,7 +3,7 @@ set statusbar-bg "#292d3e"
 set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
-set first-pagecolumn 1
+set first-pagecolumn 1:1
 map u scroll half-up
 map d scroll half-down
 map D toggle_page_mode

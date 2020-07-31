@@ -1,5 +1,3 @@
-http://lukesmith.xyz/rss.xml
-https://notrelated.libsyn.com/rss
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~YOUTUBE: DistroTube"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~YOUTUBE: Luke Smith"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "~YOUTUBE: Brodie Robertson"
@@ -7,8 +5,13 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCS97tchJDq17Qms3cux8wcA "~Y
 https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw "~YOUTUBE: ThePrimeagen"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLQVvvaa0QuDdeMyHEYc0gxFpYwHY2Qfdh "~YOUTUBE: sentdex - PyTorch"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj "~YOUTUBE: Doom Emacs"
+https://videos.lukesmith.xyz/feeds/videos.atom "~PEERTUBE: Luke Smith"
+https://groups.google.com/forum/feed/qtile-dev/topics/atom.xml?num=50 "~GOOGLE GROUPS: Qtile-dev"
 https://www.reddit.com/r/vim.rss "~REDDIT: r/vim"
+https://www.reddit.com/r/emacs.rss "~REDDIT: r/emacs"
 https://www.reddit.com/r/unixporn.rss "~REDDIT: r/unixporn"
 https://gitlab.com/dwt1.atom "~GITLAB: dwt1 (distrotube)"
 https://github.com/LukeSmithxyz.atom "~GITHUB: LukeSmithxyz"
-https://nitter.nixnet.services/realDonaldTrump/rss
+https://nitter.nixnet.services/realDonaldTrump/rss "~TWITTER: Donald Trump"
+http://lukesmith.xyz/rss.xml "~OTHER: Luke Smith"
+https://notrelated.libsyn.com/rss "~OTHER: notrelated"
