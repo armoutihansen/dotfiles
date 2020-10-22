@@ -13,16 +13,13 @@ Plug 'jiangmiao/auto-pairs' 			" Autopair brackets, quotations...
 Plug 'scrooloose/nerdtree'                         " Nerdtree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
 Plug 'junegunn/goyo.vim'  			" Environment for writing
-Plug 'PotatoesMaster/i3-vim-syntax' 		" Syntax support for i3 config
 Plug 'jreybert/vimagit'  			" Git workflow
 Plug 'lukesmithxyz/vimling' 			" Prose
 Plug 'vimwiki/vimwiki' 				" Personal wiki
-" Plug 'bling/vim-airline' 			" Airline and tabline
+Plug 'bling/vim-airline' 			" Airline and tabline
+Plug 'vim-airline/vim-airline-themes' 			" Airline and tabline
 Plug 'tpope/vim-commentary' 			" Easy code commenting
-Plug 'kovetskiy/sxhkd-vim' 			" Syntax support for sxhkd
 Plug 'ap/vim-css-color' 			" Color support
-Plug 'ervandew/supertab' 			" Use tab in auto complete menu
-Plug 'majutsushi/tagbar' 			" Right-side bar showing tags
 Plug 'ryanoasis/vim-devicons' 			" Icon support
 Plug 'mhinz/vim-startify'                 	" Vim Start Page
 Plug 'qpkorr/vim-bufkill' 			" Kill buffer while preserving splits
@@ -37,97 +34,76 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'drewtempelmeyer/palenight.vim'
-" Plug 'itchyny/lightline.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'liuchengxu/vim-which-key'
+Plug 'liuchengxu/vista.vim'
+Plug 'unblevable/quick-scope'
+Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'lervag/vimtex'
 call plug#end()
 
-" some basics
-	" colorscheme dracula
-	colorscheme palenight
-	set background=dark
-	au ColorScheme * hi Normal ctermbg=None
+" Basics
+	syntax enable
+	set hidden
+	" set nowrap
+	set encoding=utf-8
+	set fileencoding=utf-8
+	" set pumheight=10
+	set cmdheight=2
+	set splitbelow splitright
+	set t_Co=256
+	set smarttab
+	set autoindent
+	set smartindent
+	set laststatus=0
 	set cursorline
+	set noshowmode
+	set noshowcmd
 	set go=a
 	set mouse=a
 	set nohlsearch
 	set clipboard+=unnamedplus
-	set laststatus=0
-	set t_Co=256
-	" set noshowmode
-	set noshowcmd
 	set nobackup                    	" No auto backups
+	set nowritebackup
 	set noswapfile                  	" No swap
-	syntax enable
 	set scrolloff=20                        " let 10 lines before/after cursor during scroll
 	set scl=yes 				" Always show sign columns
-	set updatetime=50
+	set updatetime=300
 	nnoremap c "_c
 	set nocompatible
 	filetype plugin on
-	let g:python_highlight_all = 1
-	syntax on
-	set encoding=utf-8
 	set number relativenumber
-	let g:python3_host_prog = '/home/jah/.config/miniconda3/envs/neovim3/bin/python'
-	let $VIRTUAL_ENV = $CONDA_PREFIX
-	" let g:python3_host_prog = 'python'
-" Enable autocompletion:
-	set wildmode=longest,list,full
-" Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+	set wildmode=longest,list,full
+	autocmd BufEnter * silent! lcd %:p:h
+	let g:tex_flavor = 'latex'
+	let g:vimtex_view_method = 'zathura'
+	syntax on
+	" set title
 
-" Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
-
-" Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
-
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-	set splitbelow splitright
-
-" 	let g:lightline = {
-" 				\ 'colorscheme': 'wombat',
-" 				\	}
-
-" Colors and Theming
-	" highlight Comment 	cterm=italic ctermfg=7
-	" highlight Pmenu 	ctermbg=8
-	" highlight PmenuSel 	ctermbg=6
-	" highlight PmenuSbar 	ctermbg=0
-	" highlight SignColumn 	ctermbg=none
-	" highlight VertSplit        ctermfg=0    ctermbg=8       cterm=none
-	" highlight LineNr           ctermfg=8    ctermbg=none    cterm=none
-	" highlight CursorLineNr     ctermfg=7    ctermbg=8       cterm=none
-	highlight EndOfBuffer ctermfg=none ctermbg=none
-	highlight SignColumn 	ctermbg=none
-	highlight LineNr           ctermfg=8    ctermbg=none    cterm=none
+" Theming
+	au ColorScheme * hi Normal ctermbg=None
+	" colorscheme onedark
+	colorscheme dracula
+	set background=dark
+	let g:onedark_hide_enfofbuffer = 1
+	let g:termcolors = 256
+	let g:onedark_terminal_italics = 1
+	let g:airline_theme='deus'
+	" let g:airline_theme="one"
+	let g_airline_powerline_fonts = 1
+	let g:airline_left_sep = ''
+	let g:airline_right_sep = ''
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#left_sep = ''
+	let g:airline#extensions#tabline#left_alt_sep = ''
+	let g:airline#extensions#tabline#right_sep = ''
+	let g:airline#extensions#tabline#right_alt_sep = ''
 	highlight CursorLine 	ctermbg=8   cterm=none
 	highlight CursorLineNr     ctermfg=15    ctermbg=8       cterm=none
-	highlight VertSplit        ctermfg=0    ctermbg=8       cterm=none
 
-let g:netrw_linestyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 25
-map <C-n> :Lex<CR>
-
-nnoremap <silent> <C-p> :FZF<CR>
-" Tabs / Buffers settings
-	tab sball
-	set switchbuf=useopen
-	nmap <F9> :bprev<CR>
-	nmap <F10> :bnext<CR>
-
-" Navigating tabs
-	nnoremap <A-Left> :tabprevious<CR>
-	nnoremap <A-Right> :tabnext<CR>
-
-" vimling:
-	nm <leader>d :call ToggleDeadKeys()<CR>
-	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
-	nm <leader>i :call ToggleIPA()<CR>
-	imap <leader>i <esc>:call ToggleIPA()<CR>a
-	nm <leader>q :call ToggleProse()<CR>
-
+" Windows
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
 	map <C-j> <C-w>j
@@ -143,6 +119,236 @@ nnoremap <silent> <C-p> :FZF<CR>
 " Change 2 split windows from vert to horiz or horiz to vert
 	map <Leader>th <C-w>t<C-w>H
 	map <Leader>tk <C-w>t<C-w>K
+
+" Python stuff
+	let g:python_highlight_all = 1
+	let g:python3_host_prog = '/home/jah/.config/miniconda3/envs/neovim3/bin/python'
+	let $VIRTUAL_ENV = $CONDA_PREFIX
+
+
+
+     " _             _   _  __
+ " ___| |_ __ _ _ __| |_(_)/ _|_   _
+" / __| __/ _` | '__| __| | |_| | | |
+" \__ \ || (_| | |  | |_| |  _| |_| |
+" |___/\__\__,_|_|   \__|_|_|  \__, |
+     "                         |___/
+
+	let g:startify_session_dir = '~/.config/nvim/session'
+	let g:startify_lists = [
+		\ { 'type': 'files', 	'header': [' 	Files'] 	},
+		\ { 'type': 'dir', 	'header': [' 	Current Directory '. getcwd()] },
+		\ { 'type': 'sessions',	'header': [' 	Sessions'] 	 },
+		\ { 'type': 'bookmarks','header': [' 	Bookmarks'] 	 },
+		\ ]
+
+	let g:startify_bookmarks = [
+	 	\ { 'i': '~/.config/nvim/init.vim' },
+		\ { 'q': '~/.config/qtile/config.py' },
+		\ ]
+
+	let g:startify_session_autoload = 1
+	let g:startify_session_delete_buffers = 1
+	let g:startify_change_to_vcs_root = 1
+	let g:startify_fortune_use_unicode = 1
+	let g:startify_session_persistence = 1
+	let g:startify_enable_special = 0
+	let g:startify_padding_left = 5
+	let g:startify_ascii = [
+    	            \ "      .            .      ",
+    	            \ "    .,;'           :,.    ",
+    	            \ "  .,;;;,,.         ccc;.  ",
+    	            \ ".;c::::,,,'        ccccc: ",
+    	            \ ".::cc::,,,,,.      cccccc.",
+    	            \ ".cccccc;;;;;;'     llllll.",
+    	            \ ".cccccc.,;;;;;;.   llllll.",
+    	            \ ".cccccc  ';;;;;;'  oooooo.",
+    	            \ "'lllllc   .;;;;;;;.oooooo'",
+    	            \ "'lllllc     ,::::::looooo'",
+    	            \ "'llllll      .:::::lloddd'",
+    	            \ ".looool       .;::coooodo.",
+    	            \ "  .cool         'ccoooc.  ",
+    	            \ "    .co          .:o:.    ",
+    	            \ "      .           .'      ",
+		    \ "Neovim - armoutihansen.xyz ",
+    	            \]
+	function! s:center(lines) abort
+  		let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
+  		let centered_lines = map(copy(a:lines),
+        		\ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
+  		return centered_lines
+	endfunction
+	let g:startify_custom_header = s:center(map(g:startify_ascii, '"     ".v:val'))
+	let g:startify_custom_footer = s:center(startify#fortune#cowsay())
+
+  " ____ ___   ____
+ " / ___/ _ \ / ___|
+" | |  | | | | |
+" | |__| |_| | |___
+ " \____\___/ \____|
+
+ " Explorer
+ 	nmap <leader>e :CocCommand explorer<CR>
+	autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+" Snippets
+	imap <C-l> <Plug>(coc-snippets-expand)
+	vmap <C-j> <Plug>(coc-snippets-select)
+	let g:coc_snippet_next = '<c-j>'
+	let g:coc_snippet_previous = '<c-k>'
+	imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+
+ " ____                   _
+" / ___| _ __   ___  __ _| | __
+" \___ \| '_ \ / _ \/ _` | |/ /
+ " ___) | | | |  __/ (_| |   <
+" |____/|_| |_|\___|\__,_|_|\_\
+
+	let g:sneak#label = 1
+	let g:sneak#use_ic_scs = 1
+	let g:sneak#s_next = 1
+	map gS <Plug>Sneak_,
+	map gs <Plug>Sneak_;
+	let g:sneak#prompt = '🕵 '
+	let g:sneak#prompt = '🔎'
+	highlight Sneak guifg=black guibg=#00C7DF ctermfg=black ctermbg=cyan
+	highlight SneakScope guifg=red guibg=yellow ctermfg=red ctermbg=yellow
+
+
+" __        ___     _      _       _
+" \ \      / / |__ (_) ___| |__   | | _____ _   _
+"  \ \ /\ / /| '_ \| |/ __| '_ \  | |/ / _ \ | | |
+"   \ V  V / | | | | | (__| | | | |   <  __/ |_| |
+"    \_/\_/  |_| |_|_|\___|_| |_| |_|\_\___|\__, |
+"                                           |___/
+	" Map leader to which_key
+	nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
+	vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
+	" Create map to add keys to
+	let g:which_key_map =  {}
+	" Define a separator
+	let g:which_key_sep = '→'
+	" set timeoutlen=100
+
+
+	" Not a fan of floating windows for this
+	let g:which_key_use_floating_win = 0
+
+	" Change the colors if you want
+	highlight default link WhichKey          Operator
+	highlight default link WhichKeySeperator DiffAdded
+	highlight default link WhichKeyGroup     Identifier
+	highlight default link WhichKeyDesc      Function
+
+	" Hide status line
+	autocmd! FileType which_key
+	autocmd  FileType which_key set laststatus=0 noshowmode noruler
+	  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+
+	" Single mappings
+	" let g:which_key_map['/'] = [ '<Plug>NERDCommenterToggle'  , 'comment' ]
+	let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
+	let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
+	let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
+	let g:which_key_map['p'] = [ '<Plug>(ripple_open_repl)'	  , 'Ipython REPL' ]
+	let g:which_key_map['r'] = [ ':Ranger'                    , 'ranger' ]
+	let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]
+	let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
+	let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
+	let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
+	let g:which_key_map['w'] = [ ':Vista!!'                    , 'Vista' ]
+
+	" s is for search
+	let g:which_key_map.s = {
+	      \ 'name' : '+search' ,
+	      \ '/' : [':History/'     , 'history'],
+	      \ ';' : [':Commands'     , 'commands'],
+	      \ 'a' : [':Ag'           , 'text Ag'],
+	      \ 'b' : [':BLines'       , 'current buffer'],
+	      \ 'B' : [':Buffers'      , 'open buffers'],
+	      \ 'c' : [':Commits'      , 'commits'],
+	      \ 'C' : [':BCommits'     , 'buffer commits'],
+	      \ 'f' : [':Files'        , 'files'],
+	      \ 'g' : [':GFiles'       , 'git files'],
+	      \ 'G' : [':GFiles?'      , 'modified git files'],
+	      \ 'h' : [':History'      , 'file history'],
+	      \ 'H' : [':History:'     , 'command history'],
+	      \ 'l' : [':Lines'        , 'lines'] ,
+	      \ 'm' : [':Marks'        , 'marks'] ,
+	      \ 'M' : [':Maps'         , 'normal maps'] ,
+	      \ 'p' : [':Helptags'     , 'help tags'] ,
+	      \ 'P' : [':Tags'         , 'project tags'],
+	      \ 's' : [':Snippets'     , 'snippets'],
+	      \ 'S' : [':Colors'       , 'color schemes'],
+	      \ 't' : [':Rg'           , 'text Rg'],
+	      \ 'T' : [':BTags'        , 'buffer tags'],
+	      \ 'w' : [':Windows'      , 'search windows'],
+	      \ 'y' : [':Filetypes'    , 'file types'],
+	      \ 'z' : [':FZF'          , 'FZF'],
+	      \ }
+
+	" Register which key map
+	call which_key#register('<Space>', "g:which_key_map")
+
+
+" __     ___     _
+" \ \   / (_)___| |_ __ _
+"  \ \ / /| / __| __/ _` |
+"   \ V / | \__ \ || (_| |
+"    \_/  |_|___/\__\__,_|
+
+	" let g:vista_default_executive = 'coc'
+	let g:vista_fzf_preview = ['right:50%']
+
+	let g:vista#renderer#enable_icon = 1
+
+	let g:vista#renderer#icons = {
+	\   "function": "\uf794",
+	\   "variable": "\uf71b",
+	\  }
+
+
+  " ___        _      _
+ " / _ \ _   _(_) ___| | _____  ___ ___  _ __   ___
+" | | | | | | | |/ __| |/ / __|/ __/ _ \| '_ \ / _ \
+" | |_| | |_| | | (__|   <\__ \ (_| (_) | |_) |  __/
+ " \__\_\\__,_|_|\___|_|\_\___/\___\___/| .__/ \___|
+  "                                     |_|
+
+	let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+	highlight QuickScopePrimary ctermfg=155 cterm=underline
+	highlight QuickScopeSecondary ctermfg=81 cterm=underline
+	let g:qs_max_chars=150
+
+
+
+
+" Goyo plugin makes text more readable when writing prose:
+	" map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+	map <leader>f :Goyo<CR>
+
+" Spell-check set to <leader>o, 'o' for 'orthography':
+	map <leader>o :setlocal spell! spelllang=en_us<CR>
+
+
+
+nnoremap <silent> <C-p> :FZF<CR>
+" Tabs / Buffers settings
+	tab sball
+	set switchbuf=useopen
+	nmap <F9> :bprev<CR>
+	nmap <F10> :bnext<CR>
+
+
+" vimling:
+	nm <leader>d :call ToggleDeadKeys()<CR>
+	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
+	nm <leader>i :call ToggleIPA()<CR>
+	imap <leader>i <esc>:call ToggleIPA()<CR>a
+	nm <leader>q :call ToggleProse()<CR>
+
 
 " Replace ex mode with gq
 	map Q gq
@@ -168,8 +374,15 @@ nnoremap <silent> <C-p> :FZF<CR>
 
 " Ensure files are read as what I want:
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	map <leader>v :VimwikiIndex
-	let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+	" map <leader>v :VimwikiIndex
+	" let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+	" let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+	let g:vimwiki_list = [{
+				\ 'path': '~/Dropbox/vimwiki',
+				\ 'template_path': '~/.config/nvim',
+				\ 'template_default': 'default',
+				\ 'template_ext': '.html'}]
+	let g:vimwiki_folding='list'
 	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
@@ -180,7 +393,6 @@ nnoremap <silent> <C-p> :FZF<CR>
 " Enable Goyo by default for mutt writting
 	" autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=100
 	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
-	" autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
 	autocmd BufRead,BufNewFile /tmp/neomutt* :set cursorline!
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
 	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
@@ -223,41 +435,15 @@ endif
 " Uncomment to autostart the NERDTree
 " autocmd vimenter * NERDTree
 " map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '►'
-let g:NERDTreeDirArrowCollapsible = '▼'
-let NERDTreeShowLineNumbers=1
-let NERDTreeShowHidden=1
-let NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize=38
-" " NeoMake settings
-" 	let g:neomake_python_enabled_makers = ['pylint']
-" 	map <leader>lo :lopen<CR>
-" 	map <leader>lc :lclose<CR>
-" 	map <leader>lp :lprev<CR>
-" 	map <leader>ln :lnext<CR>
+" map <C-m> :NERDTreeCWD<CR>
+" let g:NERDTreeDirArrowExpandable = '►'
+" let g:NERDTreeDirArrowCollapsible = '▼'
+" let NERDTreeShowLineNumbers=1
+" let NERDTreeShowHidden=1
+" let NERDTreeMinimalUI = 1
+" let g:NERDTreeWinSize=30
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" 	function! MyOnBattery()
-" 	  return readfile('/sys/class/power_supply/AC0/online') == ['0']
-" 	  return 0
-" 	endfunction
-
-" 	if MyOnBattery()
-" 	  call neomake#configure#automake('w')
-" 	else
-" 	  call neomake#configure#automake('nw', 1000)
-" 	endif
-
-" " Enable formaters
-" 	let g:neoformat_enabled_python = ['autopep8', 'yapf', 'docformatter']
-
-" " Enable alignment
-" 	let g:neoformat_basic_format_align = 1
-
-" " Enable tab to spaces conversion
-" 	let g:neoformat_basic_format_retab = 1
-
-" " Enable trimmming of trailing whitespace
-" 	let g:neoformat_basic_format_trim = 1
 
 " REPL appear below
 	let g:ripple_winpos="below"

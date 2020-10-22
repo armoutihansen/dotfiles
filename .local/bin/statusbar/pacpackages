@@ -26,4 +26,4 @@ case $BLOCK_BUTTON in
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-pacman -Qu | grep -Fcv "[ignored]" | sed "s/^/📦 /;s/^📦 0$//g"
+cat /tmp/pacupdate 2>/dev/null || pacman -Qu | grep -Fcv "[ignored]" | sed "s/^/📦 /;s/^📦 0$//g"

@@ -29,6 +29,7 @@ case "$file" in
 	*\.[rR]md) Rscript -e "rmarkdown::render('$file', quiet=TRUE)" ;;
 	*\.tex) textype "$file" ;;
 	*\.md) pandoc "$file" --pdf-engine=xelatex -o "$base".pdf ;;
+	*\.wiki) pandoc "$file" -f vimwiki -t pdf --pdf-engine=xelatex -o "$base".pdf ;;
 	*config.h) sudo make install ;;
 	*\.c) cc "$file" -o "$base" && "$base" ;;
 	*\.py) python "$file" ;;

@@ -30,10 +30,10 @@ bind-key x pb-delete
 # color article white default bold
 
 color listnormal cyan default
-color listfocus black yellow standout bold
+color listfocus yellow default bold
 color listnormal_unread blue default
 color listfocus_unread yellow default bold
-color info red black bold
+color info red default bold
 color article white default bold
 
 # color listnormal        default default

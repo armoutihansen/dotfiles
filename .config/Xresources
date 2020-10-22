@@ -1,15 +1,18 @@
 !! Transparency (0-1):
 *dpi: 192
 Xft.dpi: 192
-*.alpha: 0.95
+*.alpha: 1.00
+dwm.selbgcolor: #002b36
+dwm.normfgcolor: #ffffff
+dwm.selfgcolor: #ffffff
 
 !! Set a default font and font size as below:
 /* st.font: monospace:size=10 */
 *.font: monospace:size=10
 
 
-Sxiv.background: #292d3e
-Sxiv.foreground: #82aaff
+Sxiv.background: #282A36
+Sxiv.foreground: #bd93f9
 ! name		dark	light */
 ! black	0	8 */
 ! red		1	9 */
@@ -83,22 +86,22 @@ Sxiv.foreground: #82aaff
 ! *.colorBD:     #d6dbe5 */
 !
 ! ! base16 */
-! *.color0:       #181818 */
-! *.color1:       #ab4642 */
-! *.color2:       #a1b56c */
-! *.color3:       #f7ca88 */
-! *.color4:       #7cafc2 */
-! *.color5:       #ba8baf */
-! *.color6:       #86c1b9 */
-! *.color7:       #d8d8d8 */
-! *.color8:       #585858 */
-! *.color9:       #ab4642 */
-! *.color10:      #a1b56c */
-! *.color11:      #f7ca88 */
-! *.color12:      #7cafc2 */
-! *.color13:      #ba8baf */
-! *.color14:      #86c1b9 */
-! *.color15:      #f8f8f8 */
+! *.color0:       #181818
+! *.color1:       #ab4642
+! *.color2:       #a1b56c
+! *.color3:       #f7ca88
+! *.color4:       #7cafc2
+! *.color5:       #ba8baf
+! *.color6:       #86c1b9
+! *.color7:       #d8d8d8
+! *.color8:       #585858
+! *.color9:       #ab4642
+! *.color10:      #a1b56c
+! *.color11:      #f7ca88
+! *.color12:      #7cafc2
+! *.color13:      #ba8baf
+! *.color14:      #86c1b9
+! *.color15:      #f8f8f8
 !
 ! !! solarized */
 ! *.color0:	#073642 */
@@ -138,24 +141,24 @@ Sxiv.foreground: #82aaff
 ! *.background:   #000000 */
 !
 ! /1* ! Dracula Xresources palette *1/ */
-! *.foreground: #F8F8F2 */
-! *.background: #282A36 */
-! *.color0:     #000000 */
-! *.color8:     #4D4D4D */
-! *.color1:     #FF5555 */
-! *.color9:     #FF6E67 */
-! *.color2:     #50FA7B */
-! *.color10:    #5AF78E */
-! *.color3:     #F1FA8C */
-! *.color11:    #F4F99D */
-! *.color4:     #BD93F9 */
-! *.color12:    #CAA9FA */
-! *.color5:     #FF79C6 */
-! *.color13:    #FF92D0 */
-! *.color6:     #8BE9FD */
-! *.color14:    #9AEDFE */
-! *.color7:     #BFBFBF */
-! *.color15:    #E6E6E6 */
+/* *.foreground: #F8F8F2 *1/ */
+*.background: #282A36
+*.color0:     #282A36
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
 !
 ! *.background: .color0 */
 ! *.color256: 0#1d2021 */
@@ -163,21 +166,21 @@ Sxiv.foreground: #82aaff
 !
 !! Pale Night */
 
-! *.foreground: #F8F8F2 */
-*.background: #292d3e
-*.color0:     #292d3e
-*.color8:     #434758
-*.color1:     #f07178
-*.color9:     #ff8b92
-*.color2:     #c3e88d
-*.color10:    #ddffa7
-*.color3:     #ffcb6b
-*.color11:    #ffe585
-*.color4:     #82aaff
-*.color12:    #9cc4ff
-*.color5:     #c792ea
-*.color13:    #e1acff
-*.color6:     #89ddff
-*.color14:    #a3f7ff
-*.color7:     #d0d0d0
-*.color15:    #ffffff
+/* ! *.foreground: #F8F8F2 *1/ */
+/* *.background: #292d3e */
+/* *.color0:     #292d3e */
+/* *.color8:     #434758 */
+/* *.color1:     #f07178 */
+/* *.color9:     #ff8b92 */
+/* *.color2:     #c3e88d */
+/* *.color10:    #ddffa7 */
+/* *.color3:     #ffcb6b */
+/* *.color11:    #ffe585 */
+/* *.color4:     #82aaff */
+/* *.color12:    #9cc4ff */
+/* *.color5:     #c792ea */
+/* *.color13:    #e1acff */
+/* *.color6:     #89ddff */
+/* *.color14:    #a3f7ff */
+/* *.color7:     #d0d0d0 */
+/* *.color15:    #ffffff */

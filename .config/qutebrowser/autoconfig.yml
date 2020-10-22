@@ -6,60 +6,9 @@
 
 config_version: 2
 settings:
-  aliases:
-    global:
-      q: close
-      qa: quit
-      w: session-save
-      wq: quit --save
-      wqa: quit --save
-  bindings.commands:
-    global:
-      normal:
-        xb: config-cycle statusbar.hide
-        xt: config-cycle tabs.show always switching
-        xx: config-cycle statusbar.hide ;; config-cycle tabs.show always switching
-  colors.statusbar.command.bg:
-    global: '#222222'
-  colors.tabs.bar.bg:
-    global: '#444444'
-  colors.webpage.prefers_color_scheme_dark:
-    global: true
-  completion.open_categories:
-    global:
-    - searchengines
-    - quickmarks
-    - bookmarks
-    - history
-  completion.quick:
-    global: true
-  completion.scrollbar.padding:
-    global: 2
-  completion.scrollbar.width:
-    global: 12
-  completion.show:
-    global: always
-  completion.shrink:
-    global: false
-  content.javascript.can_open_tabs_automatically:
-    global: true
-  content.notifications:
-    https://www.reddit.com: false
-  editor.command:
-    global:
-    - nvim
-    - -f
-    - '{file}'
-    - -c
-    - normal {line}G{column0}l
-  qt.highdpi:
-    global: true
+  auto_save.interval:
+    global: 15000
   statusbar.show:
-    global: always
+    global: in-mode
   tabs.show:
     global: switching
-  url.searchengines:
-    global:
-      DEFAULT: https://duckduckgo.com/?q={}
-      g: https://www.google.com/search?hl=en&q={}
-      gs: https://scholar.google.com/scholar?hl=de&as_sdt=0%2C5&q={}

@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # Use neovim for vim if present.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
@@ -28,7 +27,6 @@ alias \
 	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \
 	f="$FILE" \
-	e="emacsclient -c -a emacs" \
 	v="$EDITOR" \
 	p="sudo pacman" \
 	xi="sudo xbps-install" \
@@ -36,9 +34,11 @@ alias \
 	xq="xbps-query" \
 	z="zathura"
 
+# e="emacsclient -c -a emacs" \
+# emacs="emacsclient -c -a emacs" \
+
 alias \
 	magit="nvim -c MagitOnly" \
-	emacs="emacsclient -c -a emacs" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
 	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
@@ -49,3 +49,6 @@ alias \
 	doom="~/.config/emacs/bin/doom" \
 	gua="git remote | xargs -L1 git push --all" \
 	cua='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME remote | xargs -L1 /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push --all' \
+	calcurse="calcurse -C ~/.config/calcurse -D ~/Dropbox/.config/calcurse" \
+	dr="mpv http://live-icy.dr.dk/A/A05H.mp3.m3u" \
+	# abook="abook -f ~/Dropbox/.config/abook/addressbook" \

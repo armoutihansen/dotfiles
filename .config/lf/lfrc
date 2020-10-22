@@ -8,7 +8,7 @@ set scrolloff 10
 set color256
 set icons
 set period 1
-set drawbox true
+# set drawbox true
 set previewer /home/jah/.local/bin/preview
 
 # Vars that depend on environmental variables
@@ -18,24 +18,22 @@ set previewer /home/jah/.local/bin/preview
 cmd open ${{
     case $(file --mime-type $f -b) in
 	image/vnd.djvu|application/pdf|application/octet-stream) zathura $fx ;;
-	# image/vnd.djvu|application/pdf|application/octet-stream) setsid zathura $fx >/dev/null 2>&1 & ;;
     	text/troff) man ./ $f;;
         text/x-org) emacs $f;;
         text/*) $EDITOR $f;;
 	application/json) $EDITOR $fx;;
 	image/x-xcf|image/svg+xml) setsid gimp $f >/dev/null 2>&1 & ;;
-	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\)\(_large\)*$" | sxiv -aio ;;
-	# image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\)\(_large\)*$" | setsid sxiv -aio 2>/dev/null | lf-select & ;;
+	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\)\(_large\)*$" | sxiv -aio 2>/dev/null | lf-select ;;
 	audio/*) mpv $f ;;
 	video/*) setsid mpv $f -quiet >/dev/null 2>&1 & ;;
-	application/pdf) setsid zathura $fx >/dev/null 2>&1 & ;;
+	application/pdf) zathura $fx >/dev/null 2>&1 ;;
         *) for f in $fx; do setsid $OPENER $f >/dev/null 2>&1 & done;;
     esac
 }}
 
 cmd open_emacs ${{
 	# setsid emacsclient -c -a emacs $fx >/dev/null 2>&1 &
-	devour emacsclient -c -a emacs $fx
+	devour emacsclient -c -a emacs $f
 	# emacsclient $f
 }}
 

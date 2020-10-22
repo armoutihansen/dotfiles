@@ -11,7 +11,7 @@ class GPU(base.ThreadedPollText):
     defaults = [
         ("format", "{MemUsed}M/{MemTotal}M - {Temp}",
          "Formatting for field names."),
-        ("update_interval", 1.0, "Update interval for the GPU Memory"),
+        ("update_interval", 10.0, "Update interval for the GPU Memory"),
     ]
 
     def __init__(self, **config):
