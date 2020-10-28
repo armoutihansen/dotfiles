@@ -382,10 +382,13 @@ nnoremap <silent> <C-p> :FZF<CR>
 				\ 'template_path': '~/.config/nvim',
 				\ 'template_default': 'default',
 				\ 'template_ext': '.html'}]
-	let g:vimwiki_folding='list'
+	let g:vimwiki_folding='custom'
 	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
+	autocmd BufRead,BufNewFile *.wiki set foldmethod=indent
+	autocmd BufWritePost *.wiki :VimwikiAll2HTML
+	autocmd VimLeave *.wiki !rsync -avh ~/Dropbox/vimwiki_html/ root@armoutihansen.xyz:/var/www/armoutihansen/vimwiki_html/
 
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!

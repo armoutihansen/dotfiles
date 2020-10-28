@@ -23,5 +23,5 @@ mkfifo /tmp/xobpipe && tail -f /tmp/xobpipe | xob &
 # dwmblocks &
 # /usr/bin/emacs --daemon &		# Remove mouse when idle
 dropbox &
-calcurse -C ~/.config/calcurse -D ~/Dropbox/.config/calcurse --daemon &
+# calcurse -C ~/.config/calcurse -D ~/Dropbox/.config/calcurse --daemon &
 # caffeine &

@@ -1,3 +1,4 @@
+set sandbox none
 set default-bg "#282a36"
 set statusbar-bg "#282a36"
 set statusbar-h-padding 0
