@@ -9,6 +9,6 @@ settings:
   auto_save.interval:
     global: 15000
   statusbar.show:
-    global: in-mode
+    global: always
   tabs.show:
-    global: switching
+    global: always
